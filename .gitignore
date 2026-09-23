@@ -1,0 +1,8 @@
+# Material de origem — notas fiscais, prints, dados internos.
+# Nao deve ir para o repositorio nem para o servidor.
+doc/
+
+# Sistema
+Thumbs.db
+.DS_Store
+desktop.ini

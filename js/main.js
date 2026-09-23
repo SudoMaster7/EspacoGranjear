@@ -96,6 +96,105 @@ function buildSpecialtyGrid() {
 }
 
 // ==========================================================================
+// Crescimento — gráfico de barras e contadores animados
+// ==========================================================================
+const REDUCE_MOTION = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+const ATENDIMENTOS_2026 = [
+  ["Jan", 783], ["Fev", 1038], ["Mar", 1945], ["Abr", 1834],
+  ["Mai", 2248], ["Jun", 2089], ["Jul", 2534], ["Ago", 2801]
+];
+
+function buildGrowthChart() {
+  const chart = document.getElementById("growthChart");
+  if (!chart) return;
+
+  const max = Math.max(...ATENDIMENTOS_2026.map((m) => m[1]));
+  chart.innerHTML = ATENDIMENTOS_2026.map(([mes, valor], i) => `
+    <li style="--i:${i}">
+      <span class="g-val">${valor.toLocaleString("pt-BR")}</span>
+      <span class="g-bar" data-h="${Math.round((valor / max) * 84)}"></span>
+      <span class="g-lbl">${mes}</span>
+    </li>`).join("");
+
+  const draw = () => {
+    chart.querySelectorAll(".g-bar").forEach((bar) => {
+      bar.style.height = `${bar.dataset.h}%`;
+    });
+  };
+
+  if (REDUCE_MOTION || !("IntersectionObserver" in window)) {
+    draw();
+    return;
+  }
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      draw();
+      obs.disconnect();
+    });
+  }, { threshold: 0.25 });
+  observer.observe(chart);
+}
+
+function setupCounters() {
+  const counters = document.querySelectorAll("[data-count]");
+  if (!counters.length) return;
+
+  const run = (el) => {
+    const target = Number(el.dataset.count);
+    const suffix = el.dataset.suffix || "";
+    if (REDUCE_MOTION) {
+      el.textContent = target.toLocaleString("pt-BR") + suffix;
+      return;
+    }
+    const start = performance.now();
+    const duration = 1300;
+    const tick = (now) => {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(target * eased).toLocaleString("pt-BR") + suffix;
+      if (progress < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+
+  if (!("IntersectionObserver" in window)) {
+    counters.forEach(run);
+    return;
+  }
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      run(entry.target);
+      obs.unobserve(entry.target);
+    });
+  }, { threshold: 0.5 });
+  counters.forEach((el) => observer.observe(el));
+}
+
+// ==========================================================================
+// Link ativo na navegação conforme a rolagem
+// ==========================================================================
+function setupScrollSpy() {
+  const links = Array.from(document.querySelectorAll('.nav-links a[href^="#"]'));
+  const sections = links
+    .map((link) => document.querySelector(link.getAttribute("href")))
+    .filter(Boolean);
+  if (!sections.length || !("IntersectionObserver" in window)) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      links.forEach((link) => {
+        link.classList.toggle("is-active", link.getAttribute("href") === `#${entry.target.id}`);
+      });
+    });
+  }, { rootMargin: "-45% 0px -50% 0px" });
+  sections.forEach((section) => observer.observe(section));
+}
+
+// ==========================================================================
 // Menu mobile
 // ==========================================================================
 function setupMobileNav() {
@@ -109,22 +208,43 @@ function setupMobileNav() {
     document.body.style.overflow = isOpen ? "hidden" : "";
   });
 
-  nav.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      nav.classList.remove("is-open");
-      btn.setAttribute("aria-expanded", "false");
-      document.body.style.overflow = "";
-    });
+  const close = () => {
+    nav.classList.remove("is-open");
+    btn.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = "";
+  };
+
+  nav.querySelectorAll("a").forEach((link) => link.addEventListener("click", close));
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && nav.classList.contains("is-open")) {
+      close();
+      btn.focus();
+    }
   });
 }
 
 // ==========================================================================
 // Formulário de parceria
 // ==========================================================================
+const WHATSAPP_NUMERO = "5500000000000"; // TODO: número real (55 + DDD + número)
+
 function setupPartnerForm() {
   const form = document.getElementById("partnerForm");
   const msg = document.getElementById("partnerFormMsg");
   if (!form || !msg) return;
+
+  // Máscara de telefone
+  const tel = form.elements.telefone;
+  if (tel) {
+    tel.addEventListener("input", () => {
+      const d = tel.value.replace(/\D/g, "").slice(0, 11);
+      if (d.length <= 2) { tel.value = d; return; }
+      if (d.length <= 6) { tel.value = `(${d.slice(0, 2)}) ${d.slice(2)}`; return; }
+      const cut = d.length > 10 ? 7 : 6;
+      tel.value = `(${d.slice(0, 2)}) ${d.slice(2, cut)}-${d.slice(cut)}`;
+    });
+  }
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -132,7 +252,25 @@ function setupPartnerForm() {
       form.reportValidity();
       return;
     }
-    // Integração real (Resend / webhook n8n) fica na API route do backend.
+
+    // Sem backend, o lead seguiria pelo WhatsApp em vez de se perder.
+    const f = form.elements;
+    const linhas = [
+      "Olá! Tenho interesse em parceria com o Espaço Granjear.",
+      "",
+      `Nome: ${f.nome.value.trim()}`,
+      `Instituição: ${f.instituicao.value.trim()}`,
+      `Tipo: ${f.tipo.value}`,
+      f.cargo.value.trim() ? `Cargo: ${f.cargo.value.trim()}` : null,
+      `E-mail: ${f.email.value.trim()}`,
+      `Telefone: ${f.telefone.value.trim()}`,
+      f.mensagem.value.trim() ? `\n${f.mensagem.value.trim()}` : null
+    ].filter(Boolean);
+
+    const url = `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(linhas.join("\n"))}`;
+    window.open(url, "_blank", "noopener");
+
+    msg.textContent = "Abrimos o WhatsApp com sua proposta preenchida. Se não abriu, chame a gente por lá.";
     msg.classList.add("is-visible");
     form.reset();
   });
@@ -181,4 +319,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupEventTracking();
   setupHeaderScrollShadow();
   setupGalleryMarquee();
+  buildGrowthChart();
+  setupCounters();
+  setupScrollSpy();
 });

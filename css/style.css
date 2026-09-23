@@ -966,3 +966,145 @@ small, .small { font-size: 15px; line-height: 1.5; }
   .header-actions .btn.btn-primary.header-only { display: none; }
   .hamburger { display: flex; }
 }
+
+
+/* ==========================================================================
+   Prova social — hero, indicadores e gráfico de crescimento
+   ========================================================================== */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* Prova no hero */
+.hero-proof {
+  display: flex; flex-wrap: wrap; gap: 28px;
+  margin: 28px 0 20px; padding: 18px 0;
+  border-top: 1px solid rgba(30,35,39,0.1);
+  border-bottom: 1px solid rgba(30,35,39,0.1);
+}
+.hero-proof li { font-size: 0.95rem; color: rgba(30,35,39,0.7); line-height: 1.35; }
+.hero-proof strong {
+  display: block; font-family: var(--font-display); font-weight: 800;
+  font-size: 1.75rem; color: var(--leaf-orange); letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Indicadores na seção de parcerias */
+.stats-row .num[data-count] { font-variant-numeric: tabular-nums; }
+.stats-note {
+  margin: 12px 0 0; font-size: 0.85rem;
+  color: rgba(255,255,255,0.78);
+}
+
+/* Seção de crescimento */
+.growth-layout {
+  display: grid; grid-template-columns: 1.5fr 1fr;
+  gap: 24px; align-items: start;
+}
+.growth-chart-card,
+.growth-highlight,
+.growth-table {
+  background: var(--white);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+.growth-chart-card { padding: 28px; }
+.growth-chart-head { margin-bottom: 28px; }
+.growth-chart-head strong {
+  display: block; font-family: var(--font-display); font-weight: 700;
+  font-size: 1.05rem; margin-bottom: 4px;
+}
+.growth-chart-head span { font-size: 0.92rem; color: rgba(30,35,39,0.65); }
+
+.growth-chart {
+  display: grid; grid-auto-flow: column; grid-auto-columns: 1fr;
+  align-items: end; gap: 10px; height: 240px;
+  border-bottom: 2px solid rgba(30,35,39,0.08); padding-bottom: 8px;
+}
+.growth-chart li {
+  display: flex; flex-direction: column; justify-content: flex-end;
+  height: 100%; min-height: 0; text-align: center; gap: 8px;
+}
+.growth-chart .g-val,
+.growth-chart .g-lbl { flex: none; }
+.growth-chart .g-val {
+  font-family: var(--font-display); font-weight: 700; font-size: 0.82rem;
+  color: var(--ink); font-variant-numeric: tabular-nums;
+}
+.growth-chart .g-lbl { font-size: 0.8rem; color: rgba(30,35,39,0.6); }
+.growth-chart .g-bar {
+  width: 100%; height: 0; border-radius: 10px 10px 4px 4px;
+  background: var(--grad-blue);
+  transition: height 0.9s cubic-bezier(0.22,0.61,0.36,1);
+  transition-delay: calc(var(--i, 0) * 70ms);
+}
+.growth-chart li:last-child .g-bar { background: var(--grad-orange); }
+
+.growth-side { display: grid; gap: 20px; }
+.growth-highlight { padding: 24px; text-align: center; }
+.growth-highlight strong {
+  display: block; font-family: var(--font-display); font-weight: 800;
+  font-size: 2.6rem; line-height: 1; color: var(--leaf-blue-dark);
+  letter-spacing: -0.03em; font-variant-numeric: tabular-nums;
+}
+.growth-highlight span {
+  display: block; margin-top: 8px; font-size: 0.9rem;
+  color: rgba(30,35,39,0.65); line-height: 1.4;
+}
+
+.growth-table { width: 100%; border-collapse: collapse; overflow: hidden; }
+.growth-table th,
+.growth-table td {
+  padding: 11px 16px; font-size: 0.9rem; text-align: right;
+  border-bottom: 1px solid rgba(30,35,39,0.07);
+}
+.growth-table thead th {
+  font-family: var(--font-display); font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: rgba(30,35,39,0.55); background: var(--mist);
+}
+.growth-table th[scope="row"] { text-align: left; font-weight: 500; }
+.growth-table td { color: rgba(30,35,39,0.7); font-variant-numeric: tabular-nums; }
+.growth-table tbody tr:hover { background: rgba(7,140,208,0.04); }
+.growth-table tfoot th,
+.growth-table tfoot td {
+  font-family: var(--font-display); font-weight: 700;
+  color: var(--leaf-blue-dark); background: var(--mist); border-bottom: 0;
+}
+
+/* Tag nas unidades */
+.unit-tag {
+  display: inline-block; vertical-align: middle; margin-left: 8px;
+  font-family: var(--font-body); font-size: 0.68rem; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--leaf-orange); background: rgba(249,103,16,0.12);
+  border-radius: var(--radius-pill); padding: 3px 10px;
+}
+
+@media (max-width: 900px) {
+  .growth-layout { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .growth-chart { height: 180px; gap: 5px; }
+  .growth-chart .g-val { font-size: 0.68rem; }
+  .growth-chart .g-lbl { font-size: 0.7rem; }
+  .growth-chart-card { padding: 20px; }
+  .hero-proof { gap: 18px; }
+  .hero-proof strong { font-size: 1.4rem; }
+}
+@media (max-width: 380px) {
+  .growth-chart .g-val { display: none; }
+}
+
+/* Link ativo na navegação */
+.nav-links a.is-active {
+  color: var(--leaf-blue-dark);
+  font-weight: 600;
+}
+.nav-links a.is-active::after {
+  content: ""; display: block; height: 2px; margin-top: 3px;
+  border-radius: 2px; background: var(--leaf-orange);
+}
+
+.stats-note + .parceria-actions { margin-top: 24px; }
