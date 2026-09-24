@@ -1,8 +1,12 @@
 # Material de origem — notas fiscais, prints, dados internos.
 # Nao deve ir para o repositorio nem para o servidor.
-doc/
+/doc/
 
 # Sistema
 Thumbs.db
 .DS_Store
 desktop.ini
+
+# Material interno — depoimentos e pesquisa com dados de famílias (LGPD)
+DEPOIMENTOS_E_PESQUISA.md
+Atualizações/

@@ -227,7 +227,7 @@ function setupMobileNav() {
 // ==========================================================================
 // Formulário de parceria
 // ==========================================================================
-const WHATSAPP_NUMERO = "5500000000000"; // TODO: número real (55 + DDD + número)
+const WHATSAPP_NUMERO = "5521965761883"; // Parcerias — Janaina Moraes
 
 function setupPartnerForm() {
   const form = document.getElementById("partnerForm");

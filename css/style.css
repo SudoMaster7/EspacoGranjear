@@ -1108,3 +1108,148 @@ small, .small { font-size: 15px; line-height: 1.5; }
 }
 
 .stats-note + .parceria-actions { margin-top: 24px; }
+
+/* ==========================================================================
+   Atualizações v3 — fotos reais, depoimentos e pesquisa
+   ========================================================================== */
+
+/* Fotos reais na galeria e nos cards */
+.marquee-photo {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  padding: 0;
+}
+.highlight-card .photo-leaf {
+  object-fit: cover;
+  display: block;
+  padding: 0;
+}
+.founder-photo {
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  padding: 0;
+}
+
+/* Hero — linha de convênios */
+.hero-convenios {
+  margin-top: 14px;
+  font-size: 0.9rem;
+  color: rgba(30,35,39,0.6);
+  line-height: 1.5;
+}
+
+/* Unidades — selos */
+.unit-badges {
+  margin: 10px 0 16px;
+  font-size: 0.82rem;
+  color: rgba(30,35,39,0.55);
+  line-height: 1.5;
+}
+
+/* Parcerias — rede de parceiros */
+.partner-network {
+  margin: 22px 0 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.82);
+  max-width: 60ch;
+}
+.parceria-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+
+/* Depoimentos */
+.testimonial-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 22px;
+}
+.testimonial-card {
+  position: relative;
+  background: var(--white);
+  border: 1px solid rgba(30,35,39,0.08);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 30px 26px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.testimonial-card::before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 26px;
+  width: 26px;
+  height: 26px;
+  border-radius: 0 100% 0 100%;
+  border: 3px solid var(--ink);
+  background: var(--leaf-sun);
+}
+.testimonial-card:nth-child(2)::before { background: var(--leaf-green); }
+.testimonial-card:nth-child(3)::before { background: var(--leaf-blue); }
+.testimonial-card:nth-child(4)::before { background: var(--leaf-orange); }
+.testimonial-card blockquote {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--ink);
+}
+.testimonial-card blockquote::before { content: "\201C"; }
+.testimonial-card blockquote::after { content: "\201D"; }
+.testimonial-card cite {
+  font-style: normal;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(30,35,39,0.55);
+  margin-top: auto;
+}
+
+/* Faixa da pesquisa de satisfação */
+.survey-strip {
+  margin-top: 36px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  background: var(--mist);
+  border-radius: var(--radius-card);
+  padding: 30px 26px;
+}
+.survey-item { text-align: center; }
+.survey-item strong {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 2.4rem;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--leaf-green-dark);
+  font-variant-numeric: tabular-nums;
+}
+.survey-item span {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: rgba(30,35,39,0.65);
+}
+.survey-note {
+  margin: 14px 0 0;
+  font-size: 0.82rem;
+  color: rgba(30,35,39,0.5);
+  text-align: center;
+}
+
+/* Foto das fundadoras — enquadramento maior */
+.founder-card picture { display: block; }
+.founder-photo {
+  width: 132px;
+  height: 152px;
+  border-radius: 0 48px 0 48px;
+}
+@media (max-width: 600px) { .founder-photo { width: 112px; height: 130px; } }
+.founder-card .btn { margin-top: 18px; }
