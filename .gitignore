@@ -7,6 +7,12 @@ Thumbs.db
 .DS_Store
 desktop.ini
 
-# Material interno — depoimentos e pesquisa com dados de famílias (LGPD)
+# Material interno — NAO publicar (LGPD / dados da clinica e das familias)
+# Contem CNPJ, endereco fiscal, celulares das fundadoras, indicadores
+# operacionais e depoimentos com nomes de criancas.
 DEPOIMENTOS_E_PESQUISA.md
+LANDING_PAGE_ESPACO_GRANJEAR.md
+INFORMACOES-NECESSARIAS.md
+INFORMACOES-NECESSARIAS.pdf
+RESUMO-WHATSAPP.md
 Atualizações/
