@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /doc/
+
+Sitemap: https://www.espacogranjear.com.br/sitemap.xml

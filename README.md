@@ -39,7 +39,11 @@ Abra http://localhost:8790
 - Botão **Baixar apresentação institucional (PDF)** em Parcerias.
 - Rodapé: e-mail real, Instagram @espacogranjear, RT com CRFa, razão social e CNPJ.
 - JSON-LD com legalName, taxID, foundingDate, telefone, sameAs, convênios e
-  endereços com CEP. Canônico em `https://espacogranjear.com/`.
+  endereços com CEP.
+- SEO (25/09/2026): canônico corrigido para `https://www.espacogranjear.com.br/`
+  (antes apontava para `espacogranjear.com`, domínio inexistente, o que impedia
+  a indexação). JSON-LD virou `@graph` (MedicalOrganization + 4 MedicalClinic),
+  `robots.txt` e `sitemap.xml` adicionados. Ao criar páginas novas, incluir no sitemap.
 
 ## PENDÊNCIAS ANTES DE PUBLICAR
 

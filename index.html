@@ -4,17 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Espaço Granjear | Clínica multidisciplinar em Duque de Caxias e Rio — Autismo, TDAH e desenvolvimento infantil</title>
-<meta name="description" content="Fonoaudiologia, Psicologia, Terapia Ocupacional, Psicopedagogia e mais em um cuidado integrado para crianças, adolescentes e adultos. Unidades em Xerém, Duque de Caxias, São Cristóvão e Botafogo.">
-<meta name="keywords" content="clínica autismo Duque de Caxias, terapia TEA Baixada Fluminense, fonoaudiologia infantil Xerém, clínica multidisciplinar Botafogo, terapia ocupacional integração sensorial RJ, ABA Rio de Janeiro">
+<meta name="description" content="Fonoaudiologia, Psicologia, Terapia Ocupacional, Psicopedagogia e mais em um cuidado integrado para crianças, adolescentes e adultos. Unidades em Xerém, Duque de Caxias, São Cristóvão e Botafogo. Convênios Assim Saúde, Petrobras e AMEP Saúde.">
+<meta name="keywords" content="clínica autismo Duque de Caxias, terapia TEA Baixada Fluminense, fonoaudiologia infantil Xerém, clínica multidisciplinar Botafogo, terapia ocupacional integração sensorial RJ, ABA Rio de Janeiro, Espaço Granjear">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Espaço Granjear | Clínica multidisciplinar em Duque de Caxias e Rio">
 <meta property="og:description" content="Cuidado integrado para desenvolver habilidades, ampliar possibilidades e transformar vidas. Fonoaudiologia, Psicologia, Terapia Ocupacional, Psicopedagogia e mais.">
-<meta property="og:image" content="assets/img/logo-espaco-granjear.png">
+<meta property="og:image" content="https://www.espacogranjear.com.br/assets/img/logo-espaco-granjear.png">
+<meta property="og:image:alt" content="Espaço Granjear — Clínica Multidisciplinar">
 <meta name="twitter:card" content="summary_large_image">
 
-<link rel="canonical" href="https://espacogranjear.com/">
-<meta property="og:url" content="https://espacogranjear.com/">
+<link rel="canonical" href="https://www.espacogranjear.com.br/">
+<meta property="og:url" content="https://www.espacogranjear.com.br/">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Espaço Granjear">
 <meta name="theme-color" content="#F96710">
@@ -32,38 +33,64 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "MedicalClinic",
-  "name": "Espaço Granjear",
-  "legalName": "Granjear – Espaço Psicopedagógico",
-  "taxID": "26.088.640/0001-99",
-  "foundingDate": "2016",
-  "url": "https://espacogranjear.com/",
-  "telephone": "+55 21 96653-7491",
-  "email": "espacogranjear123@gmail.com",
-  "sameAs": [
-    "https://instagram.com/espacogranjear"
-  ],
-  "description": "Clínica multidisciplinar com foco em transtornos do neurodesenvolvimento: Fonoaudiologia, Psicologia, Terapia Ocupacional, Psicopedagogia, Fisioterapia, Psicomotricidade, Musicoterapia e Nutrição.",
-  "medicalSpecialty": [
-    "Speech Therapy",
-    "Psychology",
-    "Occupational Therapy",
-    "Physiotherapy",
-    "Nutrition"
-  ],
-  "openingHours": "Mo-Fr 08:00-17:00",
-  "image": "assets/img/logo-espaco-granjear.png",
-  "logo": "assets/img/logo-espaco-granjear.png",
-  "paymentAccepted": "Particular (unidade Xerém), convênios, reembolso",
-  "healthPlanNetworkId": [
-    "Assim Saúde",
-    "Petrobras",
-    "AMEP Saúde"
-  ],
-  "location": [
+  "@graph": [
     {
-      "@type": "Place",
+      "@type": "MedicalOrganization",
+      "@id": "https://www.espacogranjear.com.br/#organizacao",
+      "name": "Espaço Granjear",
+      "alternateName": "Granjear",
+      "legalName": "Granjear – Espaço Psicopedagógico",
+      "taxID": "26.088.640/0001-99",
+      "url": "https://www.espacogranjear.com.br/",
+      "logo": "https://www.espacogranjear.com.br/assets/img/logo-espaco-granjear.png",
+      "image": "https://www.espacogranjear.com.br/assets/img/logo-espaco-granjear.png",
+      "foundingDate": "2016",
+      "telephone": "+55-21-96653-7491",
+      "email": "espacogranjear123@gmail.com",
+      "sameAs": [
+        "https://www.instagram.com/espacogranjear"
+      ],
+      "description": "Clínica multidisciplinar com foco em transtornos do neurodesenvolvimento: Fonoaudiologia, Psicologia, Terapia Ocupacional, Psicopedagogia, Fisioterapia, Psicomotricidade, Musicoterapia e Nutrição.",
+      "medicalSpecialty": [
+        "SpeechPathology",
+        "Physiotherapy",
+        "Pediatric"
+      ],
+      "department": [
+        {
+          "@id": "https://www.espacogranjear.com.br/#unidade-xerem"
+        },
+        {
+          "@id": "https://www.espacogranjear.com.br/#unidade-caxias"
+        },
+        {
+          "@id": "https://www.espacogranjear.com.br/#unidade-sao-cristovao"
+        },
+        {
+          "@id": "https://www.espacogranjear.com.br/#unidade-botafogo"
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.espacogranjear.com.br/#site",
+      "url": "https://www.espacogranjear.com.br/",
+      "name": "Espaço Granjear",
+      "inLanguage": "pt-BR",
+      "publisher": {
+        "@id": "https://www.espacogranjear.com.br/#organizacao"
+      }
+    },
+    {
+      "@type": "MedicalClinic",
+      "@id": "https://www.espacogranjear.com.br/#unidade-xerem",
       "name": "Espaço Granjear — Xerém (unidade principal)",
+      "parentOrganization": {
+        "@id": "https://www.espacogranjear.com.br/#organizacao"
+      },
+      "url": "https://www.espacogranjear.com.br/",
+      "image": "https://www.espacogranjear.com.br/assets/img/logo-espaco-granjear.png",
+      "telephone": "+55-21-96653-7491",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Rua Décio de Oliveira, 86",
@@ -71,11 +98,37 @@
         "addressRegion": "RJ",
         "postalCode": "25250-620",
         "addressCountry": "BR"
-      }
+      },
+      "areaServed": "Xerém",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "08:00",
+        "closes": "17:00"
+      },
+      "paymentAccepted": "Particular, convênios, reembolso",
+      "healthPlanNetworkId": [
+        "Assim Saúde",
+        "Petrobras",
+        "AMEP Saúde"
+      ]
     },
     {
-      "@type": "Place",
+      "@type": "MedicalClinic",
+      "@id": "https://www.espacogranjear.com.br/#unidade-caxias",
       "name": "Espaço Granjear — Centro de Duque de Caxias",
+      "parentOrganization": {
+        "@id": "https://www.espacogranjear.com.br/#organizacao"
+      },
+      "url": "https://www.espacogranjear.com.br/",
+      "image": "https://www.espacogranjear.com.br/assets/img/logo-espaco-granjear.png",
+      "telephone": "+55-21-96653-7491",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "R. Dep. Ampliato Cabral, 151 — Jardim Vinte e Cinco de Agosto",
@@ -83,11 +136,37 @@
         "addressRegion": "RJ",
         "postalCode": "25070-370",
         "addressCountry": "BR"
-      }
+      },
+      "areaServed": "Jardim Vinte e Cinco de Agosto",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "08:00",
+        "closes": "17:00"
+      },
+      "paymentAccepted": "Convênios, reembolso",
+      "healthPlanNetworkId": [
+        "Assim Saúde",
+        "Petrobras",
+        "AMEP Saúde"
+      ]
     },
     {
-      "@type": "Place",
+      "@type": "MedicalClinic",
+      "@id": "https://www.espacogranjear.com.br/#unidade-sao-cristovao",
       "name": "Espaço Granjear — São Cristóvão",
+      "parentOrganization": {
+        "@id": "https://www.espacogranjear.com.br/#organizacao"
+      },
+      "url": "https://www.espacogranjear.com.br/",
+      "image": "https://www.espacogranjear.com.br/assets/img/logo-espaco-granjear.png",
+      "telephone": "+55-21-96653-7491",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "R. Chaves Faria, 64 — Imperial de São Cristóvão (Hospital Memorial)",
@@ -95,11 +174,37 @@
         "addressRegion": "RJ",
         "postalCode": "20910-140",
         "addressCountry": "BR"
-      }
+      },
+      "areaServed": "Imperial de São Cristóvão",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "08:00",
+        "closes": "17:00"
+      },
+      "paymentAccepted": "Convênios, reembolso",
+      "healthPlanNetworkId": [
+        "Assim Saúde",
+        "Petrobras",
+        "AMEP Saúde"
+      ]
     },
     {
-      "@type": "Place",
+      "@type": "MedicalClinic",
+      "@id": "https://www.espacogranjear.com.br/#unidade-botafogo",
       "name": "Espaço Granjear — Botafogo",
+      "parentOrganization": {
+        "@id": "https://www.espacogranjear.com.br/#organizacao"
+      },
+      "url": "https://www.espacogranjear.com.br/",
+      "image": "https://www.espacogranjear.com.br/assets/img/logo-espaco-granjear.png",
+      "telephone": "+55-21-96653-7491",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Rua Muniz Barreto, 535 — Centro Médico Amiu",
@@ -107,7 +212,26 @@
         "addressRegion": "RJ",
         "postalCode": "22251-090",
         "addressCountry": "BR"
-      }
+      },
+      "areaServed": "Botafogo",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "08:00",
+        "closes": "17:00"
+      },
+      "paymentAccepted": "Convênios, reembolso",
+      "healthPlanNetworkId": [
+        "Assim Saúde",
+        "Petrobras",
+        "AMEP Saúde"
+      ]
     }
   ]
 }
